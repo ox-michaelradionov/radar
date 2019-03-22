@@ -2,19 +2,37 @@ Vue.component('adopted-list', {
 
   computed: {
     blips() {
-      return this.$root.blips.ids
-        .map((id) => {
+      const blips = this.$root.blips.ids
+        .filter((id) => {
           const entries = this.$root.blips.map[id];
           const adoptedEntry = entries.find(entry => entry.ring === 'Adopt');
           if (adoptedEntry === undefined) {
-            return null;
+            return false;
           }
+          return true;
+        })
+        .map((id) => {
+          const entries = this.$root.blips.map[id];
+          const adoptedEntry = entries.find(entry => entry.ring === 'Adopt');
 
-          console.log(adoptedEntry);
+          adoptedEntry.entries = entries;
+
+          adoptedEntry.entries.sort((a, b) => {
+            if (a.date > b.date) return 1;
+            if (a.date < b.date) return -1;
+            return 0;
+          });
 
           return adoptedEntry;
-        })
-        .filter(entry => entry !== null);
+        });
+
+      blips.sort((a, b) => {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        return 0;
+      });
+
+      return blips;
     },
   },
 
@@ -33,7 +51,19 @@ Vue.component('adopted-list', {
             {{blip.quadrant}}
           </td>
           <td>
-            {{blip.description}}
+            <table>
+              <tr
+                v-for="entry in blip.entries"
+              >
+                <td width="10%">
+                  {{entry.ring}}
+                </td>
+                <td width="10%">
+                  {{entry.date}}
+                </td>
+                <td v-html="entry.description"></td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>

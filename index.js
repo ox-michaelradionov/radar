@@ -37,6 +37,7 @@ const app = new Vue({
         } = blip;
 
         blip.index = radarId || index;
+        blip.date = restRadar.date;
 
         if (blipsMap[blip.id] === undefined) {
           blipsIds.push(blip.id);
