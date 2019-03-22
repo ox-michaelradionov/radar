@@ -1,7 +1,25 @@
 <link rel="stylesheet" href="style.css">
 
 <div id="app">
-  <adopted-list></adopted-list>
+  <checkbox-filter
+    :options="RINGS_OPTIONS"
+    title="Rings"
+    v-model="selectedRings"
+  ></checkbox-filter>
+  <checkbox-filter
+    :options="QUADRANTS_OPTIONS"
+    title="Quadrants"
+    v-model="selectedQuadrants"
+  ></checkbox-filter>
+  <checkbox-filter
+    :options="radarsOptions"
+    title="Radars"
+    v-model="selectedRadars"
+  ></checkbox-filter>
+  <br />
+  <list
+    :blips="filteredBlips"
+  ></list>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

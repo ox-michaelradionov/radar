@@ -1,8 +1,55 @@
-table {
+.list-table {
   border: 1px solid #000;
   border-collapse: collapse;
 }
 
-td {
+.list-table > tr > td {
   border: 1px solid #000;
+}
+
+.list-table > tr > th {
+  border: 1px solid #000;
+  text-align: left;
+}
+
+.list-table > tr:nth-child(even) {
+  background: #eee;
+}
+
+.list-table > tr > td > table {
+  border: none;
+  border-collapse: collapse;
+}
+
+.list-table tr > td > table td {
+  border: 1px solid #000;
+  border-top: 0;
+}
+
+.list-table > tr > td > table td:first-child {
+  border-left: none;
+}
+
+.list-table > tr > td > table td:last-child {
+  border-right: none;
+}
+
+.list-table > tr > td > table tr:last-child td {
+  border-bottom: 0;
+}
+
+.checkbox-filter {
+  margin-bottom: 10px;
+}
+
+.checkbox-filter button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.checkbox-filter button:hover {
+  color: #999;
 }
