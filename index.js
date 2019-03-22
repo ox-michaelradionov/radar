@@ -77,7 +77,6 @@ const app = new Vue({
     const data = await response.json();
 
     const allRadars = [];
-    const radarsMap = {};
 
     const blipsIds = [];
     const blipsMap = {};
