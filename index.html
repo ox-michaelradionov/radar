@@ -16,6 +16,9 @@
     title="Radars"
     v-model="selectedRadars"
   ></checkbox-filter>
+  <text-search
+    v-model="nameQuery"
+  ></text-search>
   <br />
   <list
     :blips="filteredBlips"

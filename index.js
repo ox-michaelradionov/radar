@@ -1,5 +1,6 @@
-import './components/List.js';
 import './components/CheckboxFilter.js';
+import './components/List.js';
+import './components/TextSearch.js';
 
 import {
   QUADRANTS_OPTIONS, RINGS_OPTIONS,
@@ -12,6 +13,8 @@ const app = new Vue({
   data: {
     QUADRANTS_OPTIONS,
     RINGS_OPTIONS,
+
+    nameQuery: '',
 
     selectedRadars: [],
     selectedQuadrants: QUADRANTS_OPTIONS.map(o => o.value),
@@ -42,7 +45,8 @@ const app = new Vue({
           const hasAny = entries.some((entry) => {
             return this.selectedRings.includes(entry.ring)
               && this.selectedRadars.includes(entry.date)
-              && this.selectedQuadrants.includes(entry.quadrant);
+              && this.selectedQuadrants.includes(entry.quadrant)
+              && entry.name.toLowerCase().includes(this.nameQuery.toLowerCase())
           });
 
           return hasAny;
