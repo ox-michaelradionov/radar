@@ -27,7 +27,7 @@ export const QUADRANTS_OPTIONS = [
 export const RINGS = {
   adopt: 'adopt',
   trial: 'trial',
-  access: 'access',
+  assess: 'assess',
   hold: 'hold',
 };
 
@@ -41,8 +41,8 @@ export const RINGS_OPTIONS = [
     title: 'Trial',
   },
   {
-    value: RINGS.access,
-    title: 'Access',
+    value: RINGS.assess,
+    title: 'Assess',
   },
   {
     value: RINGS.hold,
