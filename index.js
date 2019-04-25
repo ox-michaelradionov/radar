@@ -111,14 +111,14 @@ const app = new Vue({
     });
 
     allRadars.sort((a, b) => {
-      if (a.date > b.date) return 1;
-      if (a.date < b.date) return -1;
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
       return 0;
     });
 
     this.radars = allRadars;
 
-    this.selectedRadars = [allRadars[allRadars.length - 1].date];
+    this.selectedRadars = [allRadars[0].date];
 
     this.blips.ids = blipsIds;
     this.blips.map = blipsMap;
